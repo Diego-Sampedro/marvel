@@ -1,12 +1,16 @@
 package edu.iesam.marvelapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import edu.iesam.marvelapp.features.superheroes.data.local.xml.SuperHeroXmlLocalDataSource
+import edu.iesam.marvelapp.features.superheroes.domain.SuperHero
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +20,18 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+/*
+        //Crear un fichero SharedPreferences para verlo
+        val xml = SuperHeroXmlLocalDataSource(this)
+        for (i in 1..5){
+
+        }
+        xml.save(mutableListOf(
+            SuperHero("1","SuperMan", "super-man", "https://"),
+            SuperHero("2","SuperWoman", "super-woman", "https://"),
+            SuperHero("3","SuperDog", "super-dog", "https://")))
+
+        val superHero = xml.findById("2")
+        Log.d(MainActivity::class.java.simpleName, superHero.toString())*/
     }
 }
