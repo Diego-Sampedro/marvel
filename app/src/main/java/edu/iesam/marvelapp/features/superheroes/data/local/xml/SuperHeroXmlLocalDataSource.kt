@@ -17,7 +17,7 @@ class SuperHeroXmlLocalDataSource(
     private val appCache: AppCache) {
 
     private val keySuperHero: String = "superhero"
-    private val ttl: Long = 5*100*60
+    private val ttl: Long = 5*10000*60
 
     /**
      * Me creo la fuente de datos xml: SharedPreferences
@@ -63,4 +63,13 @@ class SuperHeroXmlLocalDataSource(
             apply()
         }
     }
+
+    fun update(superHero: SuperHero) {
+        //superHeroes contiene todos los SuperHeroes EXCEPTO el que quiero modificar
+        val superHeroes = findAll().filterNot { it.id == superHero.id }.toMutableList()
+        superHeroes.add(superHero)
+        save(superHeroes)
+
+    }
+
 }
